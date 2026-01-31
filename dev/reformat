@@ -34,7 +34,7 @@ MODE=pre
 SCALA_PROFILE=scala-2.12
 function run_maven() {
   if [[ "$CHECK" == "true" ]]; then
-    "${PROJECT_DIR}"/build/mvn spotless:check compile test-compile scalafix:scalafix -Dscalafix.mode=CHECK -Dscalafix.skipTest=true -DskipBuildNative -P"${MODE}" -P"${SCALA_PROFILE}" "$@"
+    "${PROJECT_DIR}"/build/mvn spotless:check compile test-compile scalafix:scalafix -Dscalafix.mode=CHECK -Dscalafix.skipTest=true -Dspotless.apply.skip=true -DskipBuildNative -P"${MODE}" -P"${SCALA_PROFILE}" "$@"
   else
     "${PROJECT_DIR}"/build/mvn spotless:apply compile test-compile scalafix:scalafix -DskipBuildNative -P"${MODE}" -P"${SCALA_PROFILE}" "$@"
   fi

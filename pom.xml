@@ -633,11 +633,14 @@
         </configuration>
         <executions>
           <execution>
-            <id>scalafix</id>
+            <id>spotless-apply</id>
             <goals>
               <goal>apply</goal>
             </goals>
             <phase>validate</phase>
+            <configuration>
+              <skip>${spotless.apply.skip}</skip>
+            </configuration>
           </execution>
         </executions>
       </plugin>
