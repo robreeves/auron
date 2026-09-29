@@ -225,6 +225,7 @@ abstract class Shims {
 
   def isQueryStageInput(plan: SparkPlan): Boolean
 
+  /** True for a shuffle query stage or an AQE shuffle read whose immediate child is one. */
   def isShuffleQueryStageInput(plan: SparkPlan): Boolean
 
   def getChildStage(plan: SparkPlan): SparkPlan

@@ -514,7 +514,8 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def isShuffleQueryStageInput(plan: SparkPlan): Boolean = {
-    plan.isInstanceOf[ShuffleQueryStageExec]
+    plan.isInstanceOf[ShuffleQueryStageExec] ||
+    (isAQEShuffleRead(plan) && plan.children.head.isInstanceOf[ShuffleQueryStageExec])
   }
 
   override def getChildStage(plan: SparkPlan): SparkPlan =
